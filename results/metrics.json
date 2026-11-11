@@ -1,0 +1,80 @@
+{
+  "config": {
+    "seed": 0,
+    "pose_noise_m": 0.015,
+    "missing_cap_p": 0.1,
+    "n_runs": 100,
+    "flasks_per_run": 3,
+    "joint_speed_rad_s": 1.0,
+    "gripper_time_s": 0.5,
+    "settle_time_s": 0.5,
+    "collision_rule": "penetration > 1 mm between robot/carried flask and anything else",
+    "execution": "kinematic playback of planned joint paths; release + settle with MuJoCo physics"
+  },
+  "n_runs": 100,
+  "run_success_rate": 1.0,
+  "runs_successful": 100,
+  "flasks_total": 300,
+  "flasks_with_cap": 258,
+  "flasks_missing_cap": 42,
+  "flasks_transferred": 258,
+  "flask_transfer_rate_when_cap_present": 1.0,
+  "missing_caps_rejected": 42,
+  "missing_caps_grasped": 0,
+  "cap_present_false_rejects": 0,
+  "failures_by_cause": {},
+  "cycle_time_s_per_flask": {
+    "mean": 7.481843600320179,
+    "median": 7.34765660320617,
+    "p95": 9.255939637489869,
+    "min": 5.417045493358477,
+    "max": 11.732539390199788
+  },
+  "planning_wall_time_s_per_flask": {
+    "mean": 2.5094621316124273,
+    "median": 2.3669393920063158,
+    "p95": 3.8428333342540992,
+    "min": 0.7924827959941467,
+    "max": 9.1954703930096
+  },
+  "vision_cap_position_error_m": {
+    "mean": 0.0027444882022712473,
+    "median": 0.0027401996809852834,
+    "p95": 0.003350886788899142,
+    "min": 0.0019217162337404835,
+    "max": 0.0037475573255031105
+  },
+  "place_xy_error_m": {
+    "mean": 0.00020475850601652695,
+    "median": 0.00012790199985302544,
+    "p95": 0.00045535948376690063,
+    "min": 1.5367332760694217e-05,
+    "max": 0.0004571115965359441
+  },
+  "planning_queries": {
+    "total": 774,
+    "rrt_connect_solved": 774,
+    "rrt_connect_paths_with_collision": 0,
+    "rrt_connect_colliding_samples": 0,
+    "baseline_paths_with_collision": 622,
+    "baseline_colliding_samples": 24681,
+    "by_segment": {
+      "home->pregrasp": {
+        "queries": 258,
+        "rrt_paths_with_collision": 0,
+        "baseline_paths_with_collision": 192
+      },
+      "pregrasp->preplace (carrying)": {
+        "queries": 258,
+        "rrt_paths_with_collision": 0,
+        "baseline_paths_with_collision": 258
+      },
+      "preplace->home": {
+        "queries": 258,
+        "rrt_paths_with_collision": 0,
+        "baseline_paths_with_collision": 172
+      }
+    }
+  },
+  "eval_wall_time_s": 763.9703278550005
+}

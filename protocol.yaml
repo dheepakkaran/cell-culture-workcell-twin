@@ -1,0 +1,54 @@
+# Lab protocol: move T75 flasks from the hood rack to the incubator shelf.
+# Simulation only. Each flask runs the same step list; a failed step triggers its on_fail action.
+protocol: rack_to_incubator_transfer
+version: 1
+labware:
+  - id: flask_A
+    type: T75
+    cap_color: red
+    source_slot: rack/1
+    dest_slot: incubator/1
+  - id: flask_B
+    type: T75
+    cap_color: blue
+    source_slot: rack/2
+    dest_slot: incubator/2
+  - id: flask_C
+    type: T75
+    cap_color: yellow
+    source_slot: rack/3
+    dest_slot: incubator/3
+slots:            # nominal positions of the flask body centre (m, world frame)
+  rack/1: [0.36, 0.32, 0.105]
+  rack/2: [0.48, 0.32, 0.105]
+  rack/3: [0.60, 0.32, 0.105]
+  incubator/1: [0.36, -0.32, 0.326]
+  incubator/2: [0.48, -0.32, 0.326]
+  incubator/3: [0.60, -0.32, 0.326]
+steps:            # order matters; the state machine follows it
+  - locate        # overhead camera, HSV cap blob in the slot ROI, depth -> world
+  - verify_cap    # cap present + located within tolerance of the slot
+  - approach      # plan home/previous -> pre-grasp (RRT-Connect), then descend
+  - grasp         # close gripper, weld flask to hand
+  - move          # lift, plan to pre-place (RRT-Connect, flask carried)
+  - place         # descend onto the shelf
+  - release       # open gripper, drop weld, let physics settle, check placement
+  - retreat       # lift out and return home
+on_fail:
+  locate: skip_flask
+  verify_cap: skip_flask       # rejection path: never grasp a flask without a verified cap
+  approach: skip_flask
+  grasp: abort_run
+  move: abort_run
+  place: abort_run
+  release: abort_run
+  retreat: abort_run
+params:
+  position_tolerance_m: 0.03   # located cap vs slot nominal
+  place_tolerance_m: 0.02      # settled flask vs destination slot (xy)
+  pregrasp_height_m: 0.30      # fingertip height above the work surface
+  grasp_height_above_body_top_m: 0.015
+  carry_height_m: 0.48
+  joint_speed_rad_s: 1.0       # cap on every joint for sim cycle time
+  gripper_time_s: 0.5
+  settle_time_s: 0.5

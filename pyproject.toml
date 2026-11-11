@@ -1,0 +1,9 @@
+[project]
+name = "cell-culture-workcell-twin"
+version = "0.1.0"
+description = "Simulated cell culture workcell digital twin: Franka Panda in a hood, RRT-Connect, OpenCV cap checks (simulation only)"
+requires-python = ">=3.12,<3.13"
+dependencies = ["mujoco", "numpy", "opencv-python-headless", "pyyaml", "pytest", "pillow"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

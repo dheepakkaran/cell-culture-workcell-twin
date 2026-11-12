@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 renders/
 *.mp4
+!docs/media/overview.mp4

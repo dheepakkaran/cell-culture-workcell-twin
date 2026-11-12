@@ -93,6 +93,7 @@ footer{padding:44px 0 64px;font-size:13.5px;color:var(--muted)}
 .fade{opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease}
 .fade.in{opacity:1;transform:none}
 
+.overview{margin:0;padding:56px 0}.overview video{display:block;width:100%;aspect-ratio:16/9;background:#0a0a0a;border:1px solid var(--line);border-radius:6px}.overview figcaption{font-size:14px;color:var(--muted);margin-top:12px;line-height:1.5}
 @media (max-width:820px){
   .stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){padding-left:0;border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}
   .cols,.cols3{grid-template-columns:1fr;gap:28px} section{padding:72px 0} header{padding:80px 0 64px}
@@ -104,7 +105,7 @@ footer{padding:44px 0 64px;font-size:13.5px;color:var(--muted)}
 <body>
 <nav><div class="wrap">
   <a class="brand" href="#">Cell Culture Workcell Twin</a>
-  <a href="#problem">Problem</a><a href="#approach">Approach</a><a href="#results">Results</a><a href="#demo">Demo</a><a href="#lessons">Lessons</a><a href="#run">Run</a>
+  <a href="#overview">Video</a><a href="#problem">Problem</a><a href="#approach">Approach</a><a href="#results">Results</a><a href="#demo">Demo</a><a href="#lessons">Lessons</a><a href="#run">Run</a>
   <a href="https://github.com/dheepakkaran/cell-culture-workcell-twin">GitHub</a>
 </div></nav>
 
@@ -118,6 +119,10 @@ footer{padding:44px 0 64px;font-size:13.5px;color:var(--muted)}
 </header>
 
 <div class="wrap">
+  <figure class="overview" id="overview">
+    <video controls playsinline preload="metadata" poster="media/overview.jpg"><source src="media/overview.mp4" type="video/mp4">Your browser cannot play this video. <a href="media/overview.mp4">Download it</a>.</video>
+    <figcaption>The whole project in 35 seconds, with sound. Everything shown is the MuJoCo simulation from evaluation run 0 and the 100-run evaluation; there is no real robot, hood or cells.</figcaption>
+  </figure>
   <div class="stats">
     <div class="stat"><div class="v" data-count="100" data-suffix="/100">100/100</div><div class="l">randomized runs fully successful, 300 flask attempts.</div></div>
     <div class="stat"><div class="v" data-count="42" data-suffix="/42">42/42</div><div class="l">missing caps caught before grasping. No false rejects.</div></div>

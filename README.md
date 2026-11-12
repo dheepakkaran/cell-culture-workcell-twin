@@ -16,6 +16,10 @@ camera with OpenCV to reject flasks without a cap.
 ![planner](https://img.shields.io/badge/planner-RRT--Connect-737373)
 ![tests](https://img.shields.io/badge/tests-7%20passing-22c55e)
 
+<a href="https://dheepakkaran.github.io/cell-culture-workcell-twin/#overview"><img src="docs/media/overview.webp" alt="35-second overview: the arm checks every flask cap, a straight-line move would crash, the planned path goes around the divider, and 100 test runs all work" width="100%"></a>
+
+<sub>35-second overview (silent preview). <a href="https://dheepakkaran.github.io/cell-culture-workcell-twin/#overview">Watch it with sound on the project page →</a></sub>
+
 </div>
 
 > **Simulation only.** No real robot, hood or cells are involved. Independent learning project, not affiliated with any lab-automation company.
